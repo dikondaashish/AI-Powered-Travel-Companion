@@ -1,0 +1,149 @@
+{
+  "tripStatsDashboard": {
+    "user": {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "picture": "https://example.com/profile.jpg",
+      "given_name": "John"
+    },
+    "summary": {
+      "totalTrips": 12,
+      "countriesVisited": 8,
+      "citiesExplored": 15,
+      "totalDaysTraveled": 87,
+      "estimatedTotalSpend": 14500,
+      "mostVisitedDestination": "Paris, France",
+      "favoriteType": "Family"
+    },
+    "charts": {
+      "tripsByYear": [
+        { "year": "2022", "trips": 3 },
+        { "year": "2023", "trips": 5 },
+        { "year": "2024", "trips": 4 }
+      ],
+      "budgetDistribution": [
+        { "name": "Budget", "value": 3 },
+        { "name": "Moderate", "value": 7 },
+        { "name": "Luxury", "value": 2 }
+      ],
+      "travelStyleBreakdown": [
+        { "name": "Solo", "value": 3 },
+        { "name": "Family", "value": 5 },
+        { "name": "Friends", "value": 2 },
+        { "name": "Couple", "value": 2 }
+      ]
+    },
+    "visitedCountries": [
+      {
+        "name": "France",
+        "code": "FR",
+        "position": { "x": 45, "y": 35 }
+      },
+      {
+        "name": "Spain",
+        "code": "ES",
+        "position": { "x": 40, "y": 40 }
+      },
+      {
+        "name": "Italy",
+        "code": "IT",
+        "position": { "x": 50, "y": 38 }
+      },
+      {
+        "name": "United Kingdom",
+        "code": "GB",
+        "position": { "x": 42, "y": 28 }
+      },
+      {
+        "name": "Japan",
+        "code": "JP",
+        "position": { "x": 80, "y": 35 }
+      },
+      {
+        "name": "Thailand",
+        "code": "TH",
+        "position": { "x": 75, "y": 45 }
+      },
+      {
+        "name": "United States",
+        "code": "US",
+        "position": { "x": 20, "y": 35 }
+      },
+      {
+        "name": "Brazil",
+        "code": "BR",
+        "position": { "x": 30, "y": 60 }
+      }
+    ],
+    "achievements": [
+      {
+        "name": "First Trip",
+        "description": "You've planned your first trip!",
+        "icon": "Award"
+      },
+      {
+        "name": "Frequent Traveler",
+        "description": "You've planned 5+ trips",
+        "icon": "Award"
+      },
+      {
+        "name": "Globe Trotter",
+        "description": "Visited 3+ countries",
+        "icon": "Award"
+      },
+      {
+        "name": "Nomad",
+        "description": "30+ days on the road",
+        "icon": "Award"
+      }
+    ],
+    "recentTrips": [
+      {
+        "id": "trip123",
+        "location": {
+          "label": "Rome, Italy",
+          "country": "Italy"
+        },
+        "noOfDays": 7,
+        "budget": "Moderate",
+        "travelType": "Family",
+        "createdAt": "2024-06-01T00:00:00Z"
+      },
+      {
+        "id": "trip456",
+        "location": {
+          "label": "Tokyo, Japan",
+          "country": "Japan"
+        },
+        "noOfDays": 10,
+        "budget": "Luxury",
+        "travelType": "Couple",
+        "createdAt": "2024-05-15T00:00:00Z"
+      },
+      {
+        "id": "trip789",
+        "location": {
+          "label": "New York, USA",
+          "country": "United States"
+        },
+        "noOfDays": 5,
+        "budget": "Budget",
+        "travelType": "Solo",
+        "createdAt": "2024-04-20T00:00:00Z"
+      }
+    ],
+    "actions": {
+      "shareStats": {
+        "endpoint": "/api/share-stats",
+        "method": "POST",
+        "payload": {
+          "userId": "user-uuid",
+          "format": "image"
+        }
+      },
+      "planNewTrip": {
+        "route": "/create-trip"
+      }
+    }
+  }
+} 
