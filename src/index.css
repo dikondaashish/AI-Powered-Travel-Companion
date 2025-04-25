@@ -67,3 +67,47 @@
       @apply bg-background text-foreground;
     }
   }
+
+/* Mapbox popup styles */
+.mapboxgl-popup-content {
+  padding: 12px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 18px !important;
+  padding: 0 6px !important;
+  color: #666 !important;
+}
+
+/* Fix for mapbox controls */
+.mapboxgl-ctrl-top-right {
+  top: 10px !important;
+  right: 10px !important;
+}
+
+/* Fix for mapbox attribution */
+.mapboxgl-ctrl-attrib {
+  font-size: 10px !important;
+}
+
+/* Allow popups to use z-index properly */
+.mapboxgl-popup {
+  z-index: 5 !important;
+}
+
+/* Make map markers appear above other elements */
+.mapboxgl-marker {
+  z-index: 2;
+}
+
+/* Make clusters appear above regular markers */
+.cluster-marker {
+  z-index: 3;
+}
+
+/* Make selected markers appear above clusters */
+.selected-marker {
+  z-index: 4 !important;
+}

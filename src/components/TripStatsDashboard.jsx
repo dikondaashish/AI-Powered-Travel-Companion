@@ -501,338 +501,340 @@ function TripStatsDashboard() {
   }
 
   return (
-    <div id="trip-stats-dashboard" className="w-full max-w-7xl mx-auto px-4 py-8 mt-16 space-y-10">
-      {/* Welcome Section */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col md:flex-row items-start md:items-center justify-between bg-gradient-to-r from-indigo-50 to-violet-50 p-6 rounded-2xl border border-indigo-100"
-      >
-        <div className="flex items-center gap-5">
-          <div className="relative">
-            <img 
-              src={user?.picture} 
-              alt={user?.name} 
-              className="w-16 h-16 rounded-full border-4 border-white shadow-md"
-            />
-            <motion.div 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.3, type: "spring" }}
-              className="absolute -bottom-2 -right-2 bg-green-500 h-5 w-5 rounded-full border-2 border-white"
-            />
+    <div id="trip-stats-dashboard" className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-20 px-4 sm:px-6">
+      <div className="w-full max-w-7xl mx-auto space-y-10">
+        {/* Welcome Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col md:flex-row items-start md:items-center justify-between bg-gradient-to-r from-indigo-50 to-violet-50 p-6 rounded-2xl border border-indigo-100"
+        >
+          <div className="flex items-center gap-5">
+            <div className="relative">
+              <img 
+                src={user?.picture} 
+                alt={user?.name} 
+                className="w-16 h-16 rounded-full border-4 border-white shadow-md"
+              />
+              <motion.div 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.3, type: "spring" }}
+                className="absolute -bottom-2 -right-2 bg-green-500 h-5 w-5 rounded-full border-2 border-white"
+              />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 text-transparent bg-clip-text">
+                Welcome Back, {user?.given_name}!
+              </h1>
+              <p className="text-gray-600 mt-1">Here's a summary of your travel adventures</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 text-transparent bg-clip-text">
-              Welcome Back, {user?.given_name}!
-            </h1>
-            <p className="text-gray-600 mt-1">Here's a summary of your travel adventures</p>
+          <div className="flex gap-3 mt-4 md:mt-0">
+            <Button 
+              onClick={generateShareableImage}
+              variant="outline" 
+              className="flex items-center gap-2 transition-all duration-300 hover:bg-indigo-50"
+            >
+              <Share className="w-4 h-4" />
+              <span>Share My Stats</span>
+            </Button>
+            <Button 
+              onClick={() => window.location.href = '/create-trip'}
+              className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:shadow-lg transition-all duration-300"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Plan New Trip</span>
+            </Button>
           </div>
+        </motion.div>
+        
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {[
+            { 
+              icon: <PlaneTakeoff className="w-6 h-6 text-indigo-600" />,
+              bgColor: 'bg-indigo-100',
+              label: 'Total Trips Planned',
+              value: stats.totalTrips
+            },
+            { 
+              icon: <Globe className="w-6 h-6 text-violet-600" />,
+              bgColor: 'bg-violet-100',
+              label: 'Countries Visited',
+              value: stats.countriesVisited
+            },
+            { 
+              icon: <MapPin className="w-6 h-6 text-green-600" />,
+              bgColor: 'bg-green-100',
+              label: 'Cities Explored',
+              value: stats.citiesExplored
+            },
+            { 
+              icon: <Calendar className="w-6 h-6 text-amber-600" />,
+              bgColor: 'bg-amber-100',
+              label: 'Total Days Traveled',
+              value: stats.totalDaysTraveled
+            },
+            { 
+              icon: <DollarSign className="w-6 h-6 text-red-600" />,
+              bgColor: 'bg-red-100',
+              label: 'Estimated Total Spend',
+              value: `$${stats.estimatedTotalSpend}`
+            },
+            { 
+              icon: <TrendingUp className="w-6 h-6 text-blue-600" />,
+              bgColor: 'bg-blue-100',
+              label: 'Most Visited',
+              value: stats.mostVisitedDestination
+            },
+          ].map((stat, index) => (
+            <AnimatedCard key={index} index={index}>
+              <Card className="border border-gray-200 hover:border-indigo-200 hover:shadow-md transition-all duration-300">
+                <CardContent className="flex items-center gap-4 p-6">
+                  <div className={`${stat.bgColor} p-3 rounded-full`}>
+                    {stat.icon}
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
+                    <h3 className="text-2xl font-bold mt-1 truncate max-w-[150px]">{stat.value}</h3>
+                  </div>
+                </CardContent>
+              </Card>
+            </AnimatedCard>
+          ))}
         </div>
-        <div className="flex gap-3 mt-4 md:mt-0">
-          <Button 
-            onClick={generateShareableImage}
-            variant="outline" 
-            className="flex items-center gap-2 transition-all duration-300 hover:bg-indigo-50"
-          >
-            <Share className="w-4 h-4" />
-            <span>Share My Stats</span>
-          </Button>
-          <Button 
-            onClick={() => window.location.href = '/create-trip'}
-            className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:shadow-lg transition-all duration-300"
-          >
-            <Plus className="w-4 h-4" />
-            <span>Plan New Trip</span>
-          </Button>
-        </div>
-      </motion.div>
-      
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {[
-          { 
-            icon: <PlaneTakeoff className="w-6 h-6 text-indigo-600" />,
-            bgColor: 'bg-indigo-100',
-            label: 'Total Trips Planned',
-            value: stats.totalTrips
-          },
-          { 
-            icon: <Globe className="w-6 h-6 text-violet-600" />,
-            bgColor: 'bg-violet-100',
-            label: 'Countries Visited',
-            value: stats.countriesVisited
-          },
-          { 
-            icon: <MapPin className="w-6 h-6 text-green-600" />,
-            bgColor: 'bg-green-100',
-            label: 'Cities Explored',
-            value: stats.citiesExplored
-          },
-          { 
-            icon: <Calendar className="w-6 h-6 text-amber-600" />,
-            bgColor: 'bg-amber-100',
-            label: 'Total Days Traveled',
-            value: stats.totalDaysTraveled
-          },
-          { 
-            icon: <DollarSign className="w-6 h-6 text-red-600" />,
-            bgColor: 'bg-red-100',
-            label: 'Estimated Total Spend',
-            value: `$${stats.estimatedTotalSpend}`
-          },
-          { 
-            icon: <TrendingUp className="w-6 h-6 text-blue-600" />,
-            bgColor: 'bg-blue-100',
-            label: 'Most Visited',
-            value: stats.mostVisitedDestination
-          },
-        ].map((stat, index) => (
-          <AnimatedCard key={index} index={index}>
-            <Card className="border border-gray-200 hover:border-indigo-200 hover:shadow-md transition-all duration-300">
-              <CardContent className="flex items-center gap-4 p-6">
-                <div className={`${stat.bgColor} p-3 rounded-full`}>
-                  {stat.icon}
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
-                  <h3 className="text-2xl font-bold mt-1 truncate max-w-[150px]">{stat.value}</h3>
+        
+        {/* Charts Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <AnimatedCard index={0}>
+            <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-6 text-gray-800">Trips by Month</h3>
+                <div className="h-72">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart 
+                      data={stats.tripsByMonth} 
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                      barSize={20}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                      <XAxis 
+                        dataKey="monthYear" 
+                        tick={{ fill: '#6B7280', fontSize: 12 }}
+                        tickLine={false}
+                        axisLine={{ stroke: '#E5E7EB' }}
+                      />
+                      <YAxis 
+                        allowDecimals={false}
+                        tick={{ fill: '#6B7280', fontSize: 12 }}
+                        tickLine={false}
+                        axisLine={{ stroke: '#E5E7EB' }}
+                      />
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend wrapperStyle={{ paddingTop: 15 }} />
+                      <Bar 
+                        dataKey="trips" 
+                        fill="#7C3AED" 
+                        name="Trips" 
+                        radius={[4, 4, 0, 0]}
+                        animationDuration={1500}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </div>
               </CardContent>
             </Card>
           </AnimatedCard>
-        ))}
-      </div>
-      
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <AnimatedCard index={0}>
-          <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6">
-              <h3 className="text-lg font-semibold mb-6 text-gray-800">Trips by Month</h3>
-              <div className="h-72">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart 
-                    data={stats.tripsByMonth} 
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                    barSize={20}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
-                    <XAxis 
-                      dataKey="monthYear" 
-                      tick={{ fill: '#6B7280', fontSize: 12 }}
-                      tickLine={false}
-                      axisLine={{ stroke: '#E5E7EB' }}
-                    />
-                    <YAxis 
-                      allowDecimals={false}
-                      tick={{ fill: '#6B7280', fontSize: 12 }}
-                      tickLine={false}
-                      axisLine={{ stroke: '#E5E7EB' }}
-                    />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Legend wrapperStyle={{ paddingTop: 15 }} />
-                    <Bar 
-                      dataKey="trips" 
-                      fill="#7C3AED" 
-                      name="Trips" 
-                      radius={[4, 4, 0, 0]}
-                      animationDuration={1500}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedCard>
-        
-        <AnimatedCard index={1}>
-          <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6">
-              <h3 className="text-lg font-semibold mb-6 text-gray-800">Budget Distribution</h3>
-              <div className="h-72">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={stats.budgetDistribution}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      label={renderCustomizedLabel}
-                      outerRadius={100}
-                      fill="#8884d8"
-                      dataKey="value"
-                      animationDuration={1500}
-                      animationBegin={200}
-                      minAngle={15}
-                    >
-                      {stats.budgetDistribution.map((entry, index) => (
-                        <Cell 
-                          key={`cell-${index}`} 
-                          fill={COLORS[index % COLORS.length]} 
-                          stroke="white"
-                          strokeWidth={2}
-                        />
-                      ))}
-                    </Pie>
-                    <Tooltip content={<CustomTooltip />} />
-                    <Legend 
-                      layout="horizontal" 
-                      verticalAlign="bottom" 
-                      align="center"
-                      wrapperStyle={{ paddingTop: 30 }}
-                      formatter={(value, entry, index) => `${value}`}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedCard>
-        
-        <AnimatedCard index={2}>
-          <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6">
-              <h3 className="text-lg font-semibold mb-6 text-gray-800">Travel Style</h3>
-              <div className="h-72">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RadialBarChart 
-                    cx="50%" 
-                    cy="50%" 
-                    innerRadius="20%" 
-                    outerRadius="80%" 
-                    data={stats.travelStyleBreakdown
-                      .sort((a, b) => b.value - a.value)
-                      .slice(0, 5)
-                      .map((item, index) => ({
-                        ...item,
-                        // Use descriptive name for display
-                        displayName: item.name,
-                        fill: COLORS[index % COLORS.length]
-                      }))} 
-                    startAngle={0} 
-                    endAngle={360}
-                    barSize={20}
-                  >
-                    <RadialBar
-                      minAngle={15}
-                      background
-                      clockWise
-                      dataKey="value"
-                      name="Count"
-                      cornerRadius={10}
-                      label={{ 
-                        position: 'insideStart', 
-                        fill: '#fff', 
-                        fontWeight: 'bold',
-                        formatter: (value) => value > 0 ? value : ''
-                      }}
-                      animationDuration={1500}
-                      animationBegin={200}
-                    />
-                    <Legend 
-                      iconSize={10} 
-                      layout="vertical" 
-                      verticalAlign="middle" 
-                      align="right"
-                      wrapperStyle={{ paddingLeft: 20 }}
-                      formatter={(value, entry) => (
-                        <span style={{ color: entry.color }}>
-                          {entry.payload.displayName}
-                        </span>
-                      )}
-                    />
-                    <Tooltip 
-                      content={<CustomTooltip />}
-                      formatter={(value, name, entry) => [value, entry.payload.displayName]}
-                    />
-                  </RadialBarChart>
-                </ResponsiveContainer>
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedCard>
-        
-        <AnimatedCard index={3}>
-          <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
-            <CardContent className="p-6">
-              <h3 className="text-lg font-semibold mb-6 text-gray-800">Visited Countries</h3>
-              <div className="h-72 flex items-center justify-center">
-                <WorldMap visitedCountries={stats.visitedCountries} />
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedCard>
-      </div>
-      
-      {/* Achievements Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-      >
-        <h3 className="text-xl font-semibold mb-6 text-gray-800">Your Travel Achievements</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {stats.achievements.map((achievement, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{ scale: 1.03 }}
-            >
-              <Card className="border-2 border-amber-200 bg-amber-50 overflow-hidden hover:shadow-md transition-all duration-300">
-                <CardContent className="p-5 flex flex-col items-center text-center">
-                  <div className="bg-amber-100 p-3 rounded-full mb-3">
-                    <Award className="w-8 h-8 text-amber-500" />
-                  </div>
-                  <h4 className="font-semibold text-gray-800">{achievement.name}</h4>
-                  <p className="text-sm text-gray-600 mt-2">{achievement.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-          {stats.achievements.length === 0 && (
-            <Card className="col-span-full border-2 border-gray-200">
-              <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="bg-gray-100 p-4 rounded-full mb-4">
-                  <Award className="w-12 h-12 text-gray-400" />
+          
+          <AnimatedCard index={1}>
+            <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-6 text-gray-800">Budget Distribution</h3>
+                <div className="h-72">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={stats.budgetDistribution}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={renderCustomizedLabel}
+                        outerRadius={100}
+                        fill="#8884d8"
+                        dataKey="value"
+                        animationDuration={1500}
+                        animationBegin={200}
+                        minAngle={15}
+                      >
+                        {stats.budgetDistribution.map((entry, index) => (
+                          <Cell 
+                            key={`cell-${index}`} 
+                            fill={COLORS[index % COLORS.length]} 
+                            stroke="white"
+                            strokeWidth={2}
+                          />
+                        ))}
+                      </Pie>
+                      <Tooltip content={<CustomTooltip />} />
+                      <Legend 
+                        layout="horizontal" 
+                        verticalAlign="bottom" 
+                        align="center"
+                        wrapperStyle={{ paddingTop: 30 }}
+                        formatter={(value, entry, index) => `${value}`}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
                 </div>
-                <h4 className="font-medium text-lg text-gray-800">No Achievements Yet</h4>
-                <p className="text-gray-600 mt-2">Start planning trips to earn achievements!</p>
               </CardContent>
             </Card>
-          )}
+          </AnimatedCard>
+          
+          <AnimatedCard index={2}>
+            <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-6 text-gray-800">Travel Style</h3>
+                <div className="h-72">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RadialBarChart 
+                      cx="50%" 
+                      cy="50%" 
+                      innerRadius="20%" 
+                      outerRadius="80%" 
+                      data={stats.travelStyleBreakdown
+                        .sort((a, b) => b.value - a.value)
+                        .slice(0, 5)
+                        .map((item, index) => ({
+                          ...item,
+                          // Use descriptive name for display
+                          displayName: item.name,
+                          fill: COLORS[index % COLORS.length]
+                        }))} 
+                      startAngle={0} 
+                      endAngle={360}
+                      barSize={20}
+                    >
+                      <RadialBar
+                        minAngle={15}
+                        background
+                        clockWise
+                        dataKey="value"
+                        name="Count"
+                        cornerRadius={10}
+                        label={{ 
+                          position: 'insideStart', 
+                          fill: '#fff', 
+                          fontWeight: 'bold',
+                          formatter: (value) => value > 0 ? value : ''
+                        }}
+                        animationDuration={1500}
+                        animationBegin={200}
+                      />
+                      <Legend 
+                        iconSize={10} 
+                        layout="vertical" 
+                        verticalAlign="middle" 
+                        align="right"
+                        wrapperStyle={{ paddingLeft: 20 }}
+                        formatter={(value, entry) => (
+                          <span style={{ color: entry.color }}>
+                            {entry.payload.displayName}
+                          </span>
+                        )}
+                      />
+                      <Tooltip 
+                        content={<CustomTooltip />}
+                        formatter={(value, name, entry) => [value, entry.payload.displayName]}
+                      />
+                    </RadialBarChart>
+                  </ResponsiveContainer>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedCard>
+          
+          <AnimatedCard index={3}>
+            <Card className="border border-gray-200 hover:shadow-md transition-all duration-300">
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-6 text-gray-800">Visited Countries</h3>
+                <div className="h-72 flex items-center justify-center">
+                  <WorldMap visitedCountries={stats.visitedCountries} />
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedCard>
         </div>
-      </motion.div>
-      
-      {/* Recent Trips */}
-      {stats.recentTrips.length > 0 && (
+        
+        {/* Achievements Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-gray-800">Recent Trips</h3>
-            {trips.length > 3 && (
-              <Button 
-                onClick={() => window.location.href = '/my-trips'}
-                variant="ghost" 
-                className="text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50"
+          <h3 className="text-xl font-semibold mb-6 text-gray-800">Your Travel Achievements</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {stats.achievements.map((achievement, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                whileHover={{ scale: 1.03 }}
               >
-                View All Trips
-              </Button>
+                <Card className="border-2 border-amber-200 bg-amber-50 overflow-hidden hover:shadow-md transition-all duration-300">
+                  <CardContent className="p-5 flex flex-col items-center text-center">
+                    <div className="bg-amber-100 p-3 rounded-full mb-3">
+                      <Award className="w-8 h-8 text-amber-500" />
+                    </div>
+                    <h4 className="font-semibold text-gray-800">{achievement.name}</h4>
+                    <p className="text-sm text-gray-600 mt-2">{achievement.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+            {stats.achievements.length === 0 && (
+              <Card className="col-span-full border-2 border-gray-200">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <div className="bg-gray-100 p-4 rounded-full mb-4">
+                    <Award className="w-12 h-12 text-gray-400" />
+                  </div>
+                  <h4 className="font-medium text-lg text-gray-800">No Achievements Yet</h4>
+                  <p className="text-gray-600 mt-2">Start planning trips to earn achievements!</p>
+                </CardContent>
+              </Card>
             )}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {stats.recentTrips.map((trip, index) => (
-              <TripCard key={trip.id} trip={trip} index={index} />
-            ))}
-          </div>
         </motion.div>
-      )}
+        
+        {/* Recent Trips */}
+        {stats.recentTrips.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-semibold text-gray-800">Recent Trips</h3>
+              {trips.length > 3 && (
+                <Button 
+                  onClick={() => window.location.href = '/my-trips'}
+                  variant="ghost" 
+                  className="text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50"
+                >
+                  View All Trips
+                </Button>
+              )}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {stats.recentTrips.map((trip, index) => (
+                <TripCard key={trip.id} trip={trip} index={index} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }

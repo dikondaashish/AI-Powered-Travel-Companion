@@ -5,12 +5,19 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import CreateTrip from './create-trip/index.jsx'
 import Header from './components/custom/Header.jsx'
+import Footer from './components/custom/Footer.jsx'
 import { Toaster } from './components/ui/sonner.jsx'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import Viewtrip from './view-trip/[tripId]/index.jsx'
 import MyTrips from './my-trips/index.jsx'
 import TripStatsDashboard from './components/TripStatsDashboard.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
+import { PlacePhotoProvider } from './context/PlacePhotoContext.jsx'
+import HowItWorks from './components/custom/HowItWorks.jsx'
+import ContactUs from './components/custom/ContactUs.jsx'
+import TermsOfService from './components/custom/TermsOfService.jsx'
+import PrivacyPolicy from './components/custom/PrivacyPolicy.jsx'
+import CookiePolicy from './components/custom/CookiePolicy.jsx'
 
 const router=createBrowserRouter([
   {
@@ -32,6 +39,26 @@ const router=createBrowserRouter([
   {
     path:'/trip-stats',
     element:<TripStatsDashboard/>
+  },
+  {
+    path:'/how-it-works',
+    element:<HowItWorks/>
+  },
+  {
+    path:'/contact',
+    element:<ContactUs/>
+  },
+  {
+    path:'/terms',
+    element:<TermsOfService/>
+  },
+  {
+    path:'/privacy',
+    element:<PrivacyPolicy/>
+  },
+  {
+    path:'/cookies',
+    element:<CookiePolicy/>
   }
 ])
 
@@ -39,9 +66,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
       <AuthProvider>
-        <Header/>
-        <Toaster  />
-        <RouterProvider router={router} />
+        <PlacePhotoProvider>
+          <Header/>
+          <Toaster  />
+          <RouterProvider router={router} />
+          <Footer />
+        </PlacePhotoProvider>
       </AuthProvider>
     </GoogleOAuthProvider>
   </React.StrictMode>,

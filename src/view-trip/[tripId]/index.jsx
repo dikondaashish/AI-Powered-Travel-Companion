@@ -8,12 +8,17 @@ import Hotels from '../components/Hotels';
 import PlacesToVisit from '../components/PlacesToVisit';
 import PackingChecklist from '../components/PackingChecklist';
 import WeatherForecast from '../components/WeatherForecast';
+import LocalEvents from '../components/LocalEvents';
+import TravelNotes from '../components/TravelNotes';
+import BudgetSummary from '../components/BudgetSummary';
 import Footer from '../components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MdAutoAwesome, MdOutlineExplore, MdFlightTakeoff, MdLocationOn, MdErrorOutline } from "react-icons/md";
+import { MdAutoAwesome, MdOutlineExplore, MdFlightTakeoff, MdLocationOn, MdErrorOutline, MdMap } from "react-icons/md";
 import { HiSparkles } from 'react-icons/hi2';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaPlaneDeparture } from "react-icons/fa";
+import { BiRestaurant } from "react-icons/bi";
+import TripMap from '../components/TripMap';
 
 function Viewtrip() {
     const { tripId } = useParams();
@@ -208,7 +213,7 @@ function Viewtrip() {
                             
                             <InfoSection trip={trip} />
                         </motion.div>
-                        
+
                         {/* Hotels Section */}
                         <motion.div
                             variants={itemVariants}
@@ -245,6 +250,35 @@ function Viewtrip() {
                                 <h2 className="text-2xl font-bold text-gray-900">Your Journey</h2>
                             </div>
                             <PlacesToVisit trip={trip} />
+                        </motion.div>
+                        
+                        {/* Budget Summary Section */}
+                        <motion.div variants={itemVariants}>
+                            <BudgetSummary trip={trip} />
+                        </motion.div>
+                        
+                        {/* Travel Notes Section */}
+                        <motion.div variants={itemVariants}>
+                            <TravelNotes trip={trip} />
+                        </motion.div>
+                        
+                        {/* Trip Map Section */}
+                        <motion.div
+                            variants={itemVariants}
+                            className="bg-white rounded-2xl shadow-md p-6 sm:p-8"
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="bg-green-100 p-2 rounded-xl">
+                                    <MdMap className="text-green-600 text-xl" />
+                                </div>
+                                <h2 className="text-2xl font-bold text-gray-900">Interactive Map</h2>
+                            </div>
+                            <TripMap trip={trip} />
+                        </motion.div>
+                        
+                        {/* Local Events Section */}
+                        <motion.div variants={itemVariants}>
+                            <LocalEvents trip={trip} />
                         </motion.div>
                         
                         {/* AI Insight Card */}
