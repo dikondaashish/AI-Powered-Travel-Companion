@@ -5,7 +5,7 @@ const CookiePolicy = () => {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-          Cookie Policy
+          Cookie Policy.
         </h1>
         
         <div className="bg-white rounded-xl shadow-md p-6 mb-8">
