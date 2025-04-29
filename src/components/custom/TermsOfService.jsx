@@ -14,7 +14,7 @@ const TermsOfService = () => {
           <div className="prose prose-sm max-w-none text-gray-600">
             <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">1. Introduction</h2>
             <p>
-              Welcome to Tripplanner.io ("we," "our," or "us"). By accessing or using our website, mobile application, or any other related services (collectively, the "Service"), you agree to be bound by these Terms of Service.
+              Welcome to Viaona.com ("we," "our," or "us"). By accessing or using our website, mobile application, or any other related services (collectively, the "Service"), you agree to be bound by these Terms of Service.
             </p>
             <p>
               Please read these Terms carefully. If you do not agree with these Terms, you should not access or use our Service.
@@ -22,7 +22,7 @@ const TermsOfService = () => {
             
             <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">2. Description of Service</h2>
             <p>
-              Tripplanner.io is an AI-powered travel planning platform that helps users create personalized travel itineraries. Our Service allows you to:
+               Viaona.com is an AI-powered travel planning platform that helps users create personalized travel itineraries. Our Service allows you to:
             </p>
             <ul className="list-disc pl-6 mb-4">
               <li>Create customized travel plans based on your preferences</li>
@@ -86,7 +86,7 @@ const TermsOfService = () => {
             
             <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">10. Contact Information</h2>
             <p>
-              If you have any questions about these Terms, please contact us at <a href="mailto:legal@tripplanner.io" className="text-blue-600 hover:text-blue-800">legal@tripplanner.io</a>.
+              If you have any questions about these Terms, please contact us at <a href="mailto:team@Viaona.com" className="text-blue-600 hover:text-blue-800">team@viaona.com</a>.
             </p>
           </div>
         </div>

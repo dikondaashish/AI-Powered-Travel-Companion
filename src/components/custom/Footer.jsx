@@ -23,9 +23,8 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <img src="/logo.svg" alt="Tripplanner.io" className="h-8 mr-3" />
               <h3 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-                Tripplanner.io
+                Viaona.com
               </h3>
             </div>
             <p className="text-sm text-gray-600 max-w-xs">
@@ -57,18 +56,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/create-trip" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                  Explore
-                </a>
-              </li>
-              <li>
-                <a href="/become-friend" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                  Become a Friend
-                </a>
-              </li>
-              <li>
                 <a href="/contact" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                  Contact
+                  Contact Us
                 </a>
               </li>
             </ul>
@@ -80,11 +69,11 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <a 
-                  href="mailto:support@tripplanner.io" 
+                  href="mailto:teams@viaona.com" 
                   className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 flex items-center"
                 >
                   <Mail className="h-4 w-4 mr-2" />
-                  <span>support@tripplanner.io</span>
+                  <span>teams@viaona.com</span>
                 </a>
               </li>
               <li className="pt-2">
@@ -147,7 +136,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center pt-6 border-t border-gray-200">
           <p className="text-xs text-gray-500">
-            © {currentYear} Tripplanner.io. All rights reserved.
+            © {currentYear} Viaona.com. All rights reserved.
           </p>
         </div>
       </div>

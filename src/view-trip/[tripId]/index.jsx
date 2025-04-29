@@ -302,7 +302,6 @@ function Viewtrip() {
                         
                         {/* Footer */}
                         <motion.div variants={itemVariants}>
-                            <Footer trip={trip} />
                         </motion.div>
                     </motion.div>
                 </div>

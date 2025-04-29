@@ -14,7 +14,7 @@ const CookiePolicy = () => {
           <div className="prose prose-sm max-w-none text-gray-600">
             <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">1. Introduction</h2>
             <p>
-              This Cookie Policy explains how Tripplanner.io ("we," "our," or "us") uses cookies and similar technologies on our website, mobile application, and other related services (collectively, the "Service"). This Cookie Policy should be read together with our Privacy Policy.
+              This Cookie Policy explains how Viaona.com ("we," "our," or "us") uses cookies and similar technologies on our website, mobile application, and other related services (collectively, the "Service"). This Cookie Policy should be read together with our Privacy Policy.
             </p>
             <p>
               By using our Service, you consent to the use of cookies and similar technologies in accordance with this Cookie Policy.
@@ -146,7 +146,7 @@ const CookiePolicy = () => {
             
             <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">9. Contact Information</h2>
             <p>
-              If you have any questions or concerns about this Cookie Policy, please contact us at <a href="mailto:privacy@tripplanner.io" className="text-blue-600 hover:text-blue-800">privacy@tripplanner.io</a>.
+              If you have any questions or concerns about this Cookie Policy, please contact us at <a href="mailto:privacy@Viaona.com" className="text-blue-600 hover:text-blue-800">privacy@Viaona.com</a>.
             </p>
           </div>
         </div>

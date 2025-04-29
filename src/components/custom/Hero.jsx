@@ -27,9 +27,9 @@ function Hero() {
 
   // Popular destinations data
   const destinations = [
-    { name: 'Chicago, IL, USA', image: 'https://images.unsplash.com/photo-1494522855154-9297ac14b55f?q=80&w=2940&auto=format&fit=crop', tags: ['3 Days', '3 to 5 People Travelers'], link: '/view-trip/1741127240958' },
-    { name: 'Bali, Indonesia', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2938&auto=format&fit=crop', tags: ['Beach', 'Culture'] },
-    { name: 'Kyoto, Japan', image: 'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2940&auto=format&fit=crop', tags: ['Historic', 'Culture'] },
+    { name: 'Chicago, IL, USA', image: 'https://images.unsplash.com/photo-1494522855154-9297ac14b55f?q=80&w=2940&auto=format&fit=crop', tags: ['3 Days', '3 to 5 People Travelers'], link: '/view-trip/1745958781034' },
+    { name: 'Bali, Indonesia', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2938&auto=format&fit=crop', tags: ['Beach', 'Culture'], link: '/view-trip/1745958877022' },
+    { name: 'Kyoto, Japan', image: 'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=2940&auto=format&fit=crop', tags: ['Historic', 'Culture'], link: '/view-trip/1745958964696' },
   ]
 
   useEffect(() => {

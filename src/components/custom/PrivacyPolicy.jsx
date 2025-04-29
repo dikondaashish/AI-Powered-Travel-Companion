@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
           <div className="prose prose-sm max-w-none text-gray-600">
             <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">1. Introduction</h2>
             <p>
-              At Tripplanner.io ("we," "our," or "us"), we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website, mobile application, or any other related services (collectively, the "Service").
+              At Viaona.com ("we," "our," or "us"), we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website, mobile application, or any other related services (collectively, the "Service").
             </p>
             <p>
               Please read this Privacy Policy carefully. By using our Service, you consent to the practices described in this policy.
@@ -107,7 +107,7 @@ const PrivacyPolicy = () => {
             
             <h2 className="text-xl font-semibold text-gray-800 mt-6 mb-4">10. Contact Information</h2>
             <p>
-              If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at <a href="mailto:privacy@tripplanner.io" className="text-blue-600 hover:text-blue-800">privacy@tripplanner.io</a>.
+              If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at <a href="mailto:teams@Viaona.com" className="text-blue-600 hover:text-blue-800">teams@Viaona.com</a>.
             </p>
           </div>
         </div>
