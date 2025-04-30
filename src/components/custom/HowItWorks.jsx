@@ -143,7 +143,7 @@ function HowItWorks() {
             <div className="mt-10 relative z-10">
               <div className="aspect-video rounded-lg overflow-hidden shadow-lg border border-gray-100">
                 <img
-                  src="/public/Screenshot 2025-04-20 at 1.54.59 PM.png"
+                  src="/Screenshot 2025-04-20 at 1.54.59 PM.png"
                   alt="Detailed Itinerary"
                   className="w-full h-full object-cover"
                 />
@@ -189,7 +189,7 @@ function HowItWorks() {
             <div className="mt-10 relative z-10">
               <div className="aspect-video rounded-lg overflow-hidden shadow-lg border border-gray-100">
                 <img
-                  src="/public/website_map.png"
+                  src="/website_map.png"
                   alt="Interactive Map"
                   className="w-full h-full object-cover"
                 />
@@ -235,7 +235,7 @@ function HowItWorks() {
             <div className="mt-10 relative z-10">
               <div className="aspect-video rounded-lg overflow-hidden shadow-lg border border-gray-100">
                 <img
-                  src="/public/money-sheet.png"
+                  src="/money-sheet.png"
                   alt="Budget Management"
                   className="w-full h-full object-cover"
                 />
