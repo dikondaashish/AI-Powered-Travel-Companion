@@ -1,8 +1,10 @@
 import React from 'react';
 import { Check, MapPin, Calendar, Wallet, NotebookPen, Sparkles, Map, PanelLeftClose, Star, User, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
+import { useSEO } from '@/context/SEOContext';
 
 function HowItWorks() {
+  const { pageSEO } = useSEO();
   const [openFaq, setOpenFaq] = useState(null);
 
   const toggleFaq = (index) => {
@@ -41,7 +43,9 @@ function HowItWorks() {
   ];
 
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-16">
+      {pageSEO.howItWorks()}
+
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="text-center">

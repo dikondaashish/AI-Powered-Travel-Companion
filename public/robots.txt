@@ -1,0 +1,23 @@
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Specify sitemap location
+Sitemap: https://viaona.com/sitemap.xml
+
+# Disallow crawling of authentication-related pages
+Disallow: /auth/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /reset-password/
+
+# Ensure crawlers don't get stuck in any potential infinite URL patterns
+Disallow: *?*sort=
+Disallow: *?*filter=
+
+# Set crawl delay for heavy crawlers
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10 

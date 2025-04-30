@@ -19,6 +19,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { FaPlaneDeparture } from "react-icons/fa";
 import { BiRestaurant } from "react-icons/bi";
 import TripMap from '../components/TripMap';
+import { useSEO } from '@/context/SEOContext';
 
 function Viewtrip() {
     const { tripId } = useParams();
@@ -26,6 +27,7 @@ function Viewtrip() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [animationComplete, setAnimationComplete] = useState(false);
+    const { pageSEO } = useSEO();
 
     useEffect(() => {
         // Trigger animation after component mounts
@@ -88,8 +90,14 @@ function Viewtrip() {
         }
     };
 
+    // Get destination name for SEO
+    const destinationName = trip?.userSelection?.location?.label || '';
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-20 px-4 sm:px-6">
+            {/* Dynamic SEO for trip page */}
+            {pageSEO.viewTrip(tripId, destinationName)}
+            
             {/* AI Data Processing Animation */}
             <AnimatePresence>
                 {loading && (

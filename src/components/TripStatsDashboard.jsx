@@ -35,6 +35,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import html2canvas from 'html2canvas';
+import { useSEO } from '@/context/SEOContext';
 
 const COLORS = ['#7C3AED', '#10B981', '#F59E0B', '#EF4444', '#6366F1'];
 const RADIAN = Math.PI / 180;
@@ -237,6 +238,7 @@ function TripStatsDashboard() {
     achievements: [],
     recentTrips: []
   });
+  const { pageSEO } = useSEO();
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
@@ -501,7 +503,9 @@ function TripStatsDashboard() {
   }
 
   return (
-    <div id="trip-stats-dashboard" className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-20 px-4 sm:px-6">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-16 px-4 sm:px-6">
+      {pageSEO.tripStats()}
+      
       <div className="w-full max-w-7xl mx-auto space-y-10">
         {/* Welcome Section */}
         <motion.div 

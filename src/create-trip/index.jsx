@@ -28,6 +28,7 @@ import { db } from '@/service/firebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import AuthDialog from '@/components/custom/AuthDialog';
 import { useAuth } from '@/context/AuthContext';
+import { useSEO } from '@/context/SEOContext';
 
 function CreateTrip() {
   const [place, setPlace] = useState();
@@ -41,6 +42,7 @@ function CreateTrip() {
   const { currentUser } = useAuth();
   const [userJustLoggedIn, setUserJustLoggedIn] = useState(false);
   const [showDurationWarning, setShowDurationWarning] = useState(false);
+  const { pageSEO } = useSEO();
   
   const steps = [
     { id: 'destination', title: 'Destination', icon: <HiOutlineLocationMarker className="h-6 w-6" /> },
@@ -218,6 +220,8 @@ function CreateTrip() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-20 px-4 sm:px-6 overflow-hidden">
+      {pageSEO.createTrip()}
+      
       <div className="max-w-6xl mx-auto">
         {/* Header with AI processing animation */}
         <motion.div

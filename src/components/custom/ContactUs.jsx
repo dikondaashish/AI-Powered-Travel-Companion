@@ -15,8 +15,10 @@ import {
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/service/firebaseConfig';
 import { toast } from 'sonner';
+import { useSEO } from '@/context/SEOContext';
 
 const ContactUs = () => {
+  const { pageSEO } = useSEO();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -129,6 +131,8 @@ const ContactUs = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+      {pageSEO.contact()}
+      
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center bg-blue-100 px-4 py-1 rounded-full text-blue-800 font-medium text-sm mb-4">

@@ -13,6 +13,8 @@ import MyTrips from './my-trips/index.jsx'
 import TripStatsDashboard from './components/TripStatsDashboard.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { PlacePhotoProvider } from './context/PlacePhotoContext.jsx'
+import { SEOProvider } from './context/SEOContext.jsx'
+import { HelmetProvider } from 'react-helmet-async'
 import HowItWorks from './components/custom/HowItWorks.jsx'
 import ContactUs from './components/custom/ContactUs.jsx'
 import TermsOfService from './components/custom/TermsOfService.jsx'
@@ -66,17 +68,21 @@ const router=createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
-      <AuthProvider>
-        <PlacePhotoProvider>
-          <Header/>
-          <Toaster  />
-          <RouterProvider router={router} />
-          <Footer />
-          <Analytics />
-          <SpeedInsights/>
-        </PlacePhotoProvider>
-      </AuthProvider>
-    </GoogleOAuthProvider>
+    <HelmetProvider>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}>
+        <AuthProvider>
+          <PlacePhotoProvider>
+            <SEOProvider>
+              <Header/>
+              <Toaster  />
+              <RouterProvider router={router} />
+              <Footer />
+              <Analytics />
+              <SpeedInsights/>
+            </SEOProvider>
+          </PlacePhotoProvider>
+        </AuthProvider>
+      </GoogleOAuthProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )
