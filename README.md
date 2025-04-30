@@ -75,6 +75,11 @@ Viaona reimagines travel planning through the power of AI. Say goodbye to hours 
 ### AI & APIs
 ![Google Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![Google Maps](https://img.shields.io/badge/Google_Maps-4285F4?style=for-the-badge&logo=google-maps&logoColor=white)
+![Mapbox](https://img.shields.io/badge/Mapbox-000000?style=for-the-badge&logo=mapbox&logoColor=white)
+![MeetBite](https://img.shields.io/badge/MeetBite-FF6B6B?style=for-the-badge&logoColor=white)
+![WeatherAPI](https://img.shields.io/badge/WeatherAPI-38B2AC?style=for-the-badge&logo=weather&logoColor=white)
+![Google Places API](https://img.shields.io/badge/Google_Places_API-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![Google Place Autocomplete](https://img.shields.io/badge/Place_Autocomplete-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
 ### DevOps
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
