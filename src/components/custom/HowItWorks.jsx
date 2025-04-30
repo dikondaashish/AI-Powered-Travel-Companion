@@ -266,7 +266,7 @@ function HowItWorks() {
             <div className="p-6 border-b border-r border-gray-100 bg-blue-50">
               <p className="font-semibold text-lg text-blue-700">AI Travel Guide</p>
             </div>
-            <div className="p-6 border-b border-gray-100 bg-gray-50">
+            <div className="p-6 border-b border-gray-100">
               <p className="font-semibold text-lg text-gray-500">Traditional Planning</p>
             </div>
 
@@ -481,6 +481,51 @@ function HowItWorks() {
               )}
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* User Manual Section */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow-md overflow-hidden">
+          <div className="p-8 md:p-10">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="mb-6 md:mb-0 md:mr-8">
+                <div className="bg-white p-4 rounded-lg shadow-md transform rotate-2">
+                  <img 
+                    src="/AI_trip_planning.png" 
+                    alt="User Manual" 
+                    className="w-32 h-32 object-cover"
+                  />
+                </div>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-3">Detailed User Manual</h2>
+                <p className="text-gray-700 mb-4">
+                  Need comprehensive guidance on using our platform? We've created a detailed user manual that covers everything from creating your first trip to using advanced features.
+                </p>
+                <ul className="text-gray-700 mb-6 space-y-2">
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Learn about all navigation options</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Understand profile management</span>
+                  </li>
+                  <li className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Get tips for optimal trip planning</span>
+                  </li>
+                </ul>
+                <a 
+                  href="/user-manual" 
+                  className="inline-block bg-blue-600 text-white font-medium px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300"
+                >
+                  View User Manual
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

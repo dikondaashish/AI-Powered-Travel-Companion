@@ -159,6 +159,11 @@ const Footer = () => {
                   Cookie Policy
                 </a>
               </li>
+              <li>
+                <a href="/user-manual" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                  User Manual
+                </a>
+              </li>
             </ul>
           </div>
         </div>

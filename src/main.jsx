@@ -20,6 +20,7 @@ import ContactUs from './components/custom/ContactUs.jsx'
 import TermsOfService from './components/custom/TermsOfService.jsx'
 import PrivacyPolicy from './components/custom/PrivacyPolicy.jsx'
 import CookiePolicy from './components/custom/CookiePolicy.jsx'
+import UserManual from './components/custom/UserManual.jsx'
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
@@ -63,6 +64,10 @@ const router=createBrowserRouter([
   {
     path:'/cookies',
     element:<CookiePolicy/>
+  },
+  {
+    path:'/user-manual',
+    element:<UserManual/>
   }
 ])
 
