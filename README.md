@@ -4,7 +4,7 @@
 
 **Your AI-Powered Travel Companion**
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/74e2f17b-ce1f-4547-b7d9-669dcd9b121f/deploy-status)](https://viaona.com)
+[![Vercel Deployment Status](https://therealsujitk-vercel-badge.vercel.app/?app=your-project-name)](https://viaona.com)
 [![GitHub license](https://img.shields.io/github/license/dikondaashish/AI-Powered-Travel-Companion)](https://github.com/dikondaashish/AI-Powered-Travel-Companion)
 ![GitHub stars](https://img.shields.io/github/stars/dikondaashish/AI-Powered-Travel-Companion?style=social)
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
