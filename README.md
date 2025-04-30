@@ -136,7 +136,7 @@ Visit `http://localhost:5173` to see your local development version.
     <tr>
       <td><img src="./public/website_map.png" width="180" /></td>
       <td><img src="./public/money-sheet.png" width="180" /></td>
-      <td><img src="./public/Screenshot 2025-04-20 at 1.54.59 PM.png" width="180" /></td>
+      <td><img src="[./public/Screenshot 2025-04-20 at 1.54.59 PM.png](https://www.viaona.com/Screenshot%202025-04-20%20at%201.54.59%E2%80%AFPM.png)" width="180" /></td>
     </tr>
   </table>
 </div>
