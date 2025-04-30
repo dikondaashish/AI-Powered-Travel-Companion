@@ -19,6 +19,7 @@ import TermsOfService from './components/custom/TermsOfService.jsx'
 import PrivacyPolicy from './components/custom/PrivacyPolicy.jsx'
 import CookiePolicy from './components/custom/CookiePolicy.jsx'
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 const router=createBrowserRouter([
   {
@@ -73,6 +74,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <RouterProvider router={router} />
           <Footer />
           <Analytics />
+          <SpeedInsights/>
         </PlacePhotoProvider>
       </AuthProvider>
     </GoogleOAuthProvider>
