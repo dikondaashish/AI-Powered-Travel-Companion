@@ -18,6 +18,7 @@ import ContactUs from './components/custom/ContactUs.jsx'
 import TermsOfService from './components/custom/TermsOfService.jsx'
 import PrivacyPolicy from './components/custom/PrivacyPolicy.jsx'
 import CookiePolicy from './components/custom/CookiePolicy.jsx'
+import { Analytics } from "@vercel/analytics/react"
 
 const router=createBrowserRouter([
   {
@@ -71,6 +72,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Toaster  />
           <RouterProvider router={router} />
           <Footer />
+          <Analytics />
         </PlacePhotoProvider>
       </AuthProvider>
     </GoogleOAuthProvider>
