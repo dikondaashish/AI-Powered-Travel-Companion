@@ -9,7 +9,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineLocationMarker, HiOutlineCalendar, HiOutlineUserGroup, HiSparkles } from 'react-icons/hi';
 import { RiCompass3Line, RiRobot2Line, RiRoadMapLine, RiMapPinLine } from "react-icons/ri";
-import { FiArrowRight, FiMapPin, FiDollarSign, FiSearch, FiClock } from 'react-icons/fi';
+import { FiArrowRight, FiMapPin, FiDollarSign, FiSearch, FiClock, FiInfo } from 'react-icons/fi';
 import { MdOutlineTravelExplore, MdAutoAwesome, MdFlightTakeoff } from "react-icons/md";
 import { FaPlaneDeparture } from "react-icons/fa";
 import {
@@ -40,6 +40,7 @@ function CreateTrip() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const { currentUser } = useAuth();
   const [userJustLoggedIn, setUserJustLoggedIn] = useState(false);
+  const [showDurationWarning, setShowDurationWarning] = useState(false);
   
   const steps = [
     { id: 'destination', title: 'Destination', icon: <HiOutlineLocationMarker className="h-6 w-6" /> },
@@ -70,6 +71,27 @@ function CreateTrip() {
     
     return () => clearTimeout(timer);
   }, []);
+
+  // Show duration warning toast when user reaches the Trip Duration step
+  useEffect(() => {
+    if (activeStep === 1 && !showDurationWarning) {
+      setShowDurationWarning(true);
+      toast(
+        <div className="flex items-start">
+          <FiInfo className="text-blue-500 mt-1 mr-2 flex-shrink-0" />
+          <div>
+            <p className="font-medium mb-1">Recommended Trip Duration</p>
+            <p className="text-sm">For the best trip recommendations, please select a duration of 3 to 4 days. Choosing more than 4 days may occasionally cause errors, as the AI currently has limitations when generating large travel plans.</p>
+          </div>
+        </div>,
+        {
+          duration: 8000,
+          position: "top-center",
+          className: "bg-blue-50 border border-blue-200 text-gray-800"
+        }
+      );
+    }
+  }, [activeStep, showDurationWarning]);
 
   // Detect when user logs in through the auth dialog and automatically generate trip
   useEffect(() => {
