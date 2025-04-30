@@ -26,16 +26,20 @@ import axios from 'axios';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '@/service/firebaseConfig';
 import { useNavigate } from 'react-router-dom';
+import AuthDialog from '@/components/custom/AuthDialog';
+import { useAuth } from '@/context/AuthContext';
 
 function CreateTrip() {
   const [place, setPlace] = useState();
   const [formData, setFormData] = useState({});
-  const [openDailog, setOpenDailog] = useState(false);
+  const [openAuthDialog, setOpenAuthDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
   const progressBarRef = useRef(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const { currentUser } = useAuth();
+  const [userJustLoggedIn, setUserJustLoggedIn] = useState(false);
   
   const steps = [
     { id: 'destination', title: 'Destination', icon: <HiOutlineLocationMarker className="h-6 w-6" /> },
@@ -66,6 +70,18 @@ function CreateTrip() {
     
     return () => clearTimeout(timer);
   }, []);
+
+  // Detect when user logs in through the auth dialog and automatically generate trip
+  useEffect(() => {
+    if (currentUser && userJustLoggedIn && isFormComplete()) {
+      // Reset flag
+      setUserJustLoggedIn(false);
+      // Generate trip with slight delay to ensure authentication is complete
+      setTimeout(() => {
+        OnGenerateTrip();
+      }, 500);
+    }
+  }, [currentUser, userJustLoggedIn]);
   
   // Flight animation progress for loading
   useEffect(() => {
@@ -83,16 +99,10 @@ function CreateTrip() {
     return () => clearInterval(interval);
   }, [loading]);
 
-  const login = useGoogleLogin({
-    onSuccess: (codeResp) => GetUserProfile(codeResp),
-    onError: (error) => console.log(error)
-  });
-
   const OnGenerateTrip = async () => {
-    const user = localStorage.getItem('user');
-
-    if (!user) {
-      setOpenDailog(true);
+    if (!currentUser) {
+      setOpenAuthDialog(true);
+      setUserJustLoggedIn(true); // Set flag to indicate we want to generate after login
       return;
     }
 
@@ -141,20 +151,6 @@ function CreateTrip() {
     
     setLoading(false);
     navigate('/view-trip/'+docId);
-  }
-
-  const GetUserProfile = (tokenInfo) => {
-    axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?acess_token=${tokenInfo?.access_token}`, {
-      headers: {
-        Authorization: `Bearer ${tokenInfo?.access_token}`,
-        Accept: 'Application/json'
-      }
-    }).then((resp) => {
-      console.log(resp);
-      localStorage.setItem('user', JSON.stringify(resp.data));
-      setOpenDailog(false);
-      OnGenerateTrip();
-    });
   }
 
   const nextStep = () => {
@@ -831,30 +827,18 @@ function CreateTrip() {
         </AnimatePresence>
       </div>
       
-      {/* Login Dialog */}
-      <Dialog open={openDailog}>
-        <DialogContent className="sm:max-w-md rounded-xl p-0 overflow-hidden">
-          <div className="bg-gradient-to-br from-[#f56551] to-[#f79577] p-6 text-white text-center">
-            <img src="/logo.svg" alt="Logo" className="h-12 mx-auto" />
-            <h2 className="text-xl font-bold mt-4">Welcome Back</h2>
-            <p className="text-sm opacity-80">Sign in to create your personalized trip</p>
-          </div>
-          
-          <div className="p-6">
-            <Button
-              onClick={login}
-              className="w-full rounded-full flex gap-3 items-center justify-center py-6 border shadow-sm hover:shadow-md transition-all bg-white text-gray-800 hover:bg-gray-50"
-            >
-              <FcGoogle className="h-5 w-5" />
-              <span>Continue with Google</span>
-            </Button>
-            
-            <p className="text-xs text-gray-500 text-center mt-4">
-              By signing in, you agree to our Terms of Service and Privacy Policy
-            </p>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Auth Dialog */}
+      <AuthDialog 
+        isOpen={openAuthDialog} 
+        onClose={() => {
+          setOpenAuthDialog(false);
+          // If user logged in while dialog was open, attempt to generate trip
+          if (currentUser && userJustLoggedIn && isFormComplete()) {
+            OnGenerateTrip();
+            setUserJustLoggedIn(false);
+          }
+        }} 
+      />
     </div>
   )
 }

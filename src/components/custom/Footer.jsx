@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowUp, Mail, Instagram, Twitter, Linkedin } from 'lucide-react';
+import EditProfileDialog from './EditProfileDialog';
+import { useAuth } from '@/context/AuthContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [openEditProfile, setOpenEditProfile] = useState(false);
   
   const scrollToTop = () => {
     window.scrollTo({
@@ -48,6 +51,33 @@ const Footer = () => {
               <li>
                 <a href="/" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
                   Home
+                </a>
+              </li>
+              <li>
+                <a href="/create-trip" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                  Create Trip
+                </a>
+              </li>
+              <li>
+                <a href="/my-trips" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                  View Trips
+                </a>
+              </li>
+              <li>
+                <a href="/trip-stats" className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                  Trip Stats
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenEditProfile(true);
+                  }}
+                  className="text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                >
+                  Edit Profile
                 </a>
               </li>
               <li>
@@ -140,6 +170,12 @@ const Footer = () => {
           </p>
         </div>
       </div>
+      
+      {/* Edit Profile Dialog */}
+      <EditProfileDialog
+        isOpen={openEditProfile}
+        onClose={() => setOpenEditProfile(false)}
+      />
     </footer>
   );
 };

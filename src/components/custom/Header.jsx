@@ -134,7 +134,7 @@ function Header() {
                     </div>
                     <div className="border-t pt-2 space-y-1">
                       <button
-                        className="w-full text-left text-sm py-2 px-3 rounded-md hover:bg-gray-100 transition-colors flex items-center gap-2"
+                        className="w-full text-left text-sm py-2 px-3 rounded-md hover:bg-gray-100 transition-colors flex items-center gap-2 desktop-edit-profile-button"
                         onClick={() => setOpenEditProfile(true)}
                       >
                         <Settings className="h-4 w-4" />
@@ -218,7 +218,7 @@ function Header() {
               </a>
               <div className="border-t pt-3 mt-2 space-y-2">
                 <button
-                  className="w-full text-left py-2 px-3 rounded-md hover:bg-gray-100 transition-colors flex items-center gap-2 text-sm"
+                  className="w-full text-left py-2 px-3 rounded-md hover:bg-gray-100 transition-colors flex items-center gap-2 text-sm mobile-edit-profile-button"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     setOpenEditProfile(true);
