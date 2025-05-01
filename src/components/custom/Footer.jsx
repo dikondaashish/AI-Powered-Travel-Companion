@@ -164,6 +164,19 @@ const Footer = () => {
                   User Manual
                 </a>
               </li>
+              <li className="mt-4">
+                <div className="transform transition-all hover:scale-105 duration-300">
+                  <a href="https://www.producthunt.com/posts/viaona?embed=true&utm_source=badge&utm_medium=badge&utm_souce=badge-viaona" target="_blank">
+                    <img 
+                      src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=960103&theme=light&t=1746134256498" 
+                      alt="Viaona - Ai&#0032;Powered&#0032;Travel&#0046;&#0032;Uniquely&#0032;Yours🧠📍🏝🛫 | Product Hunt" 
+                      style={{ width: "250px", height: "54px" }} 
+                      width="250" 
+                      height="54" 
+                    />
+                  </a>
+                </div>
+              </li>
             </ul>
           </div>
         </div>

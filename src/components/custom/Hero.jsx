@@ -115,6 +115,7 @@ function Hero() {
           
           {/* Left Column - Hero Text */}
           <div className="lg:w-1/2 space-y-8">
+ 
             <motion.div
               initial="hidden"
               animate={isVisible ? "visible" : "hidden"}
@@ -149,8 +150,26 @@ function Hero() {
               className="text-xl text-gray-600"
               style={{ fontSize: "15px" }}
             >
-              Skip the Spreadsheet Chaos. Get a Done-for-You Itinerary — Beach Vibes, Foodie Tours, or Epic Road Trips. We’ve Got You.
+              Skip the Spreadsheet Chaos. Get a Done-for-You Itinerary — Beach Vibes, Foodie Tours, or Epic Road Trips. We've Got You.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-4 flex justify-center lg:justify-start"
+            >
+              <a href="https://www.producthunt.com/posts/viaona?embed=true&utm_source=badge&utm_medium=badge&utm_souce=badge-viaona" target="_blank">
+                <img 
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=960103&theme=light&t=1746134256498" 
+                  alt="Viaona - Ai&#0032;Powered&#0032;Travel&#0046;&#0032;Uniquely&#0032;Yours🧠📍🏝🛫 | Product Hunt" 
+                  style={{ width: "250px", height: "54px" }} 
+                  width="250" 
+                  height="54" 
+                />
+              </a>
+            </motion.div>
+            
             
             {/* Search Bar */}
             <motion.div
