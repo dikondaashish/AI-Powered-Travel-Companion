@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.22.0",
+    "@google/generative-ai": "^0.24.1",
     "@googlemaps/markerclusterer": "^2.5.3",
     "@mapbox/mapbox-gl-geocoder": "^5.0.3",
     "@radix-ui/react-checkbox": "^1.1.5",
